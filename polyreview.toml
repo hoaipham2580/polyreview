@@ -1,0 +1,17 @@
+# PolyReview 配置示例 — 复制为 polyreview.toml 后按需修改。
+# base_url 和 model 改成你实际的 LLM provider 信息;OpenAI 兼容端点都支持。
+[llm]
+api_key      = "${POLYREVIEW_API_KEY}"
+base_url     = "https://api.openai.com/v1"      # 例:小米 MiMo 端点 / 任意 OpenAI 兼容聚合
+model        = "gpt-4o-mini"                    # 例:你的 MiMo / DeepSeek / GPT 模型名
+temperature  = 0.2
+max_tokens   = 1024
+timeout      = 30
+
+[agents]
+enabled = ["security", "performance", "style", "logic"]
+
+[cache]
+enabled     = true
+ttl_seconds = 86400
+path        = ".polyreview-cache"

@@ -1,0 +1,29 @@
+diff --git a/src/auth.py b/src/auth.py
+index 1111111..2222222 100644
+--- a/src/auth.py
++++ b/src/auth.py
+@@ -38,5 +38,6 @@ def login(name, pw):
+     conn = db()
+-    q = "SELECT * FROM users WHERE name='" + name + "'"
++    q = "SELECT * FROM users WHERE name=?"
++    return conn.execute(q, (name,)).fetchone()
+diff --git a/src/loader.py b/src/loader.py
+index 3333333..4444444 100644
+--- a/src/loader.py
++++ b/src/loader.py
+@@ -98,4 +98,5 @@ def load_all(paths):
+     out = []
+-    for p in paths:
+-        out.append(open(p).read())
++    for p in paths:
++        with open(p) as fh:
++            out.append(fh.read())
+diff --git a/src/api.py b/src/api.py
+index 5555555..6666666 100644
+--- a/src/api.py
++++ b/src/api.py
+@@ -16,2 +16,4 @@ def first(items):
+-    return items[0]
++    if not items:
++        raise ValueError("empty input")
++    return items[0]
