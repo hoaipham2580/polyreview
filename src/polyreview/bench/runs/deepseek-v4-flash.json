@@ -1,0 +1,103 @@
+{
+  "label": "deepseek-v4-flash",
+  "config": "PolyReview-4",
+  "client": "openai",
+  "model": "deepseek/deepseek-v4-flash",
+  "timestamp": "2026-05-15T14:38:42+00:00",
+  "samples": 10,
+  "hits": 9,
+  "findings": 19,
+  "elapsed_seconds": 606.874,
+  "per_sample": [
+    {
+      "id": "s01-sql-injection",
+      "hit": true,
+      "findings": 3,
+      "messages": [
+        "使用f-string拼接用户输入到SQL查询中，仍然存在SQL注入风险。",
+        "SQL注入风险：直接拼接用户输入到SQL查询中，未使用参数化查询。",
+        "变量名 'q' 过于简短，缺乏描述性，降低代码可读性。"
+      ]
+    },
+    {
+      "id": "s02-bare-except",
+      "hit": true,
+      "findings": 3,
+      "messages": [
+        "使用裸 except 捕获所有异常，包括 SystemExit 和 KeyboardInterrupt，可能导致程序无法正常退出或响应中断，隐藏严重错误。",
+        "使用裸 except 会捕获包括 SystemExit 和 KeyboardInterrupt 在内的所有异常，可能导致程序无法正常退出或中断。",
+        "裸 except 会捕获所有异常，包括 SystemExit 和 KeyboardInterrupt，可能导致程序非正常退出，且不利于调试。"
+      ]
+    },
+    {
+      "id": "s03-index-out-of-range",
+      "hit": false,
+      "findings": 0,
+      "messages": []
+    },
+    {
+      "id": "s04-open-in-loop",
+      "hit": true,
+      "findings": 2,
+      "messages": [
+        "paths 变量可能来自用户输入，导致任意文件读取漏洞（路径遍历）。攻击者可构造恶意路径读取系统敏感文件。",
+        "文件打开后未关闭，可能导致文件描述符泄漏。"
+      ]
+    },
+    {
+      "id": "s05-hardcoded-secret",
+      "hit": true,
+      "findings": 2,
+      "messages": [
+        "硬编码了API密钥'sk-live-1234567890abcdef'，导致敏感数据直接暴露在代码中，存在泄露风险。",
+        "硬编码 API 密钥降低了代码的可读性和可维护性，且存在严重安全风险。读者无法从代码中得知密钥的来源或用途，且密钥可能被意外提交到版本控制。"
+      ]
+    },
+    {
+      "id": "s06-md5-password",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "密码哈希从安全的bcrypt改为不安全的MD5，导致密码存储易受暴力破解和彩虹表攻击。"
+      ]
+    },
+    {
+      "id": "s07-string-concat-loop",
+      "hit": true,
+      "findings": 2,
+      "messages": [
+        "在循环中使用字符串拼接（+=）会导致每次迭代创建新的字符串对象，时间复杂度为O(n^2)，而使用''.join()是O(n)。当xs较大时，性能会显著下降。",
+        "使用字符串拼接代替join导致O(n^2)时间复杂度"
+      ]
+    },
+    {
+      "id": "s08-no-docstring",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "Removed docstring from function get_user, reducing documentation and readability."
+      ]
+    },
+    {
+      "id": "s09-mutable-default",
+      "hit": true,
+      "findings": 3,
+      "messages": [
+        "使用可变默认参数 `lst=[]` 会导致所有调用共享同一个列表对象。如果函数内部修改了该列表（如执行 append 操作），列表会无限增长，造成内存泄漏和后续操作性能下降。",
+        "使用可变对象作为函数默认参数会导致所有调用共享同一个列表对象，可能产生意外副作用。",
+        "修改后的默认参数 list 是可变对象，所有调用会共享同一个列表实例，容易导致意料之外的副作用。"
+      ]
+    },
+    {
+      "id": "s10-unbounded-recursion",
+      "hit": true,
+      "findings": 2,
+      "messages": [
+        "Recursive call before base case check causes infinite recursion, leading to stack overflow and excessive stack frame allocation.",
+        "递归调用在基本情况检查之前，导致无限递归"
+      ]
+    }
+  ],
+  "recall": 0.9,
+  "precision": 0.47368421052631576
+}

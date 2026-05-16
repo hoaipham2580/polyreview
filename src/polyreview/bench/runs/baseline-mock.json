@@ -1,0 +1,65 @@
+{
+  "label": "baseline-mock",
+  "config": "Baseline-Single",
+  "client": "mock",
+  "model": "n/a",
+  "timestamp": "2026-05-15T15:19:28+00:00",
+  "samples": 10,
+  "hits": 5,
+  "findings": 5,
+  "elapsed_seconds": 0.0,
+  "per_sample": [
+    {
+      "id": "s01-sql-injection",
+      "hit": true,
+      "findings": 1
+    },
+    {
+      "id": "s02-bare-except",
+      "hit": true,
+      "findings": 1
+    },
+    {
+      "id": "s03-index-out-of-range",
+      "hit": true,
+      "findings": 1
+    },
+    {
+      "id": "s04-open-in-loop",
+      "hit": true,
+      "findings": 1
+    },
+    {
+      "id": "s05-hardcoded-secret",
+      "hit": true,
+      "findings": 1
+    },
+    {
+      "id": "s06-md5-password",
+      "hit": false,
+      "findings": 0
+    },
+    {
+      "id": "s07-string-concat-loop",
+      "hit": false,
+      "findings": 0
+    },
+    {
+      "id": "s08-no-docstring",
+      "hit": false,
+      "findings": 0
+    },
+    {
+      "id": "s09-mutable-default",
+      "hit": false,
+      "findings": 0
+    },
+    {
+      "id": "s10-unbounded-recursion",
+      "hit": false,
+      "findings": 0
+    }
+  ],
+  "recall": 0.5,
+  "precision": 1.0
+}

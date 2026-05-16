@@ -1,0 +1,95 @@
+{
+  "label": "mock",
+  "config": "PolyReview-4",
+  "client": "mock",
+  "model": "n/a",
+  "timestamp": "2026-05-15T15:20:14+00:00",
+  "samples": 10,
+  "hits": 10,
+  "findings": 10,
+  "elapsed_seconds": 0.001,
+  "per_sample": [
+    {
+      "id": "s01-sql-injection",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "SQL built via string concatenation — injection risk"
+      ]
+    },
+    {
+      "id": "s02-bare-except",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "Bare except: swallows BaseException incl. KeyboardInterrupt"
+      ]
+    },
+    {
+      "id": "s03-index-out-of-range",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "Indexing items[0] without empty-check — IndexError on empty input"
+      ]
+    },
+    {
+      "id": "s04-open-in-loop",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "open() inside a loop — file handles not closed; consider with-statement"
+      ]
+    },
+    {
+      "id": "s05-hardcoded-secret",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "Hard-coded API secret — move to env var or secret manager"
+      ]
+    },
+    {
+      "id": "s06-md5-password",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "Weak hash for password — use bcrypt / argon2"
+      ]
+    },
+    {
+      "id": "s07-string-concat-loop",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "String += inside loop is O(n²); use ''.join(...)"
+      ]
+    },
+    {
+      "id": "s08-no-docstring",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "Docstring removed from public function"
+      ]
+    },
+    {
+      "id": "s09-mutable-default",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "Mutable default argument — shared across calls"
+      ]
+    },
+    {
+      "id": "s10-unbounded-recursion",
+      "hit": true,
+      "findings": 1,
+      "messages": [
+        "Recursive call before termination check — infinite recursion"
+      ]
+    }
+  ],
+  "recall": 1.0,
+  "precision": 1.0
+}
